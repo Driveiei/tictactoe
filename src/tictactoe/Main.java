@@ -34,7 +34,7 @@ public class Main extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader(formURL);
 			Parent parent = loader.load();
-			GameController controller = loader.getController();
+			loader.getController();
 			primaryStage.setTitle("Tic-Tac-Toe");
 			Scene scene = new Scene(parent);
 	        primaryStage.setScene(scene);
