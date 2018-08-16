@@ -75,12 +75,9 @@ public class TicTacToeGame {
 	 * Place a piece at a given (row,col) on the game board. It is up to the caller
 	 * to make sure that the cell can be occupied before calling moveTo.
 	 * 
-	 * @param piece
-	 *            - the piece to place.
-	 * @param row
-	 *            - board row to move to.
-	 * @param col
-	 *            - board column to move to.
+	 * @param piece - the piece to place.
+	 * @param row - board row to move to.
+	 * @param col - board column to move to.
 	 */
 	public void moveTo(Piece piece, int col, int row) {
 		assert canMoveTo(piece.type, col, row) : String.format("moveTo(%s,%d,%d) is invalid", piece.toString(), row,
@@ -95,9 +92,6 @@ public class TicTacToeGame {
 			nextPlayer = Player.O;
 		else
 			nextPlayer = Player.X;
-		/** after each move check if board is full */
-		if (boardIsFull())
-			gameOver.set(true);
 		/** after each move check if board is full */
 		/** check if someone won the game */
 		if (boardIsFull() || winner() != Player.NONE)
@@ -136,39 +130,31 @@ public class TicTacToeGame {
 			}
 			return p;
 		}
-		// Look for N matching pieces on downward diagonal.
 
-		// Player p = pieces[0][0].type;
-		// if (p != Player.NONE && p == pieces[1][1].type && p == pieces[2][2].type && p
-		// == pieces[3][3].type) {
-		// // all pieces on diagonal occupied by same type (Player)
-		// return p;
-		// }
+		// Look for N Matching pieces on downward diagonal.
 		Player p = pieces[0][0].type;
 		if (p != Player.NONE) {
 			boolean check = true;
 			for (int i = 1; i < boardsize; i++) {
-				if(p != pieces[i][i].type) {
+				if (p != pieces[i][i].type) {
 					check = false;
 				}
 			}
-			if(check) return p;
+			if (check)
+				return p;
 		}
-		// Look for N matching pieces on upward diagonal
-		p = pieces[0][boardsize-1].type; // start at lower-left corner
+		// Look for N matching pieces on upward diagonal.s
+		p = pieces[0][boardsize - 1].type; // start at lower-left corner
 		if (p != Player.NONE) {
 			boolean check = true;
 			for (int i = 1; i < boardsize; i++) {
-				if(p != pieces[i][boardsize-(i+1)].type) {
+				if (p != pieces[i][boardsize - (i + 1)].type) {
 					check = false;
 				}
 			}
-			if(check) return p;
+			if (check)
+				return p;
 		}
-//		if (p != Player.NONE && p == pieces[1][2].type && p == pieces[2][1].type && p == pieces[3][0].type) {
-//			// all pieces on diagonal occupied by same type (Player)
-//			return p;
-//		}
 		return Player.NONE;
 	}
 
