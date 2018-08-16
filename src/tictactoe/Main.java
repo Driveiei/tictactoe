@@ -13,13 +13,14 @@ import javafx.stage.Stage;
 /**
  * Launch the JavaFX application.
  *
+ * @author James Brucker
  */
 public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	/**
 	 * Start the UI using FXML form.
 	 */
@@ -28,7 +29,7 @@ public class Main extends Application {
 		String fxml = "tictactoe/GameUI.fxml";
 		URL formURL = this.getClass().getClassLoader().getResource(fxml);
 		if (formURL == null) {
-			Logger.getLogger("Main").severe("Could not find UI form "+fxml);
+			Logger.getLogger("Main").severe("Could not find UI form " + fxml);
 			return;
 		}
 		try {
@@ -37,14 +38,14 @@ public class Main extends Application {
 			loader.getController();
 			primaryStage.setTitle("Tic-Tac-Toe");
 			Scene scene = new Scene(parent);
-	        primaryStage.setScene(scene);
-	        primaryStage.sizeToScene();
-	        primaryStage.show();
+			primaryStage.setScene(scene);
+			primaryStage.sizeToScene();
+			primaryStage.show();
 		} catch (Exception ex) {
-			Logger.getLogger("Main").log(Level.SEVERE, "Exception initializing game: \n"+ex.getMessage(), ex);
-			// Does Logger.log() print the stacktrace?  If so, we don't need this:
+			Logger.getLogger("Main").log(Level.SEVERE, "Exception initializing game: \n" + ex.getMessage(), ex);
+			// Does Logger.log() print the stacktrace? If so, we don't need this:
 			ex.printStackTrace();
-			
+
 			return;
 		}
 	}

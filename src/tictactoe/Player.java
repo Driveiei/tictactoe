@@ -2,6 +2,8 @@ package tictactoe;
 
 /**
  * Types of pieces in the game.
+ * 
+ * @author James Brucker
  */
 public enum Player {
 	X("X", 1),
@@ -11,6 +13,12 @@ public enum Player {
 	public final String text;
 	public final int value;
 	
+	/**
+	 * Initialize the player status
+	 * 
+	 * @param text - display text of players.
+	 * @param value - number of players.
+	 * */
 	private Player(String text, int value) {
 		this.text = text;
 		this.value = value;
