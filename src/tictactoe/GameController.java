@@ -40,7 +40,7 @@ public class GameController {
 	 */
 	@FXML
 	public void initialize() {
-		game = new TicTacToeGame(3);
+		game = new TicTacToeGame(4);
 		Board board = game.getBoard();
 		// make the board size match the size of pane where it is shown
 		centerPane.getChildren().add(board);
