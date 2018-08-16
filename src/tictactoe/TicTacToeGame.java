@@ -64,6 +64,8 @@ public class TicTacToeGame {
 			return false;
 		if (col < 0 || col > pieces[row].length)
 			return false;
+		// no moves allowed after the game is over!
+		if(isGameOver()) return false;
 		return pieces[row][col] == null || pieces[row][col] == Piece.NONE;
 	}
 
@@ -71,13 +73,9 @@ public class TicTacToeGame {
 	 * Place a piece at a given (row,col) on the game board. It is up to the caller
 	 * to make sure that the cell can be occupied before calling moveTo.
 	 * 
-	 * @param piece
-	 *            the piece to place
-	 * @param row
-	 *            board row to move to
-	 * @param col
-	 *            board column to move to
-	 */
+	 * @param piece - the piece to place.
+	 * @param row - board row to move to.
+	 * @param col - board column to move to.	 */
 	public void moveTo(Piece piece, int col, int row) {
 		assert canMoveTo(piece.type, col, row) : String.format("moveTo(%s,%d,%d) is invalid", piece.toString(), row,
 				col);
@@ -94,7 +92,11 @@ public class TicTacToeGame {
 		/** after each move check if board is full */
 		if (boardIsFull())
 			gameOver.set(true);
-
+		/** after each move check if board is full */
+		/** check if someone won the game */
+		if(boardIsFull() || winner() != Player.NONE)
+			gameOver.set(true);
+		
 	}
 
 	/**
