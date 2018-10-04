@@ -1,5 +1,7 @@
 ## Tic-Tac-Toe
 
+[![Build Status](https://travis-ci.com/Driveiei/tictactoe.svg?branch=master)](https://travis-ci.com/Driveiei/tictactoe)
+
 ### Description
 
 A tic-tac-toe game written using JavaFX.
